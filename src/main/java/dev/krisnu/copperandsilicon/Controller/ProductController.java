@@ -53,16 +53,16 @@ public class ProductController {
                 .body(receivedProduct);
     }
 
-    @GetMapping("/deleteAllProduct")
+    @DeleteMapping("/deleteAllProduct")
     public ResponseEntity<String> deleteAllProduct() {
         List<Products> receivedProduct =productService.deleteAllProduct();
         return ResponseEntity.ok().body("All Products deleted successfully");
     }
 
-    @GetMapping("/deleteOneProduct/{id}")
+    @DeleteMapping("/deleteOneProduct/{id}")
     public ResponseEntity<String> deleteOneProduct(@PathVariable Long id) {
         Optional<Products> receivedProduct =productService.deleteOneProduct(id);
-        return ResponseEntity.ok().body("Products " +id+ " deleted successfully");
+        return ResponseEntity.ok().body("Product " +id+ " deleted successfully");
     }
 
 }
