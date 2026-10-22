@@ -1,6 +1,7 @@
 package dev.krisnu.copperandsilicon.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 
 public class Reviews {
     @Id
+    @GeneratedValue
     private Long reviewId;
 
     private Long productReviewIndex;
