@@ -8,14 +8,13 @@ import org.springframework.stereotype.Service;
 
 public class ProductService {
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository){
         this.productRepository = productRepository;
     }
 
     public Products postNewProduct(Products products){
-        Products newProduct=productRepository.save(products);
-        return newProduct;
+        return productRepository.save(products);
     }
 }
