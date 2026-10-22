@@ -23,6 +23,6 @@ public class Products {
     private String productPrice;
     private String productImageUrl;
     private Long productIndex;
-    private Reviews reviews;
+    private String reviews;
     private Boolean availability;
 }
