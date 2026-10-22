@@ -15,14 +15,14 @@ import java.util.Optional;
 
 public class ProductController {
 
-    private ProductService productService;
+    private final ProductService productService;
 
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
     @PostMapping("/postNewProduct")
-    public ResponseEntity<Products> postNewProduct(Products products) {
+    public ResponseEntity<Products> postNewProduct(@RequestBody Products products) {
         Products postedProduct=productService.postNewProduct(products);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -44,4 +44,14 @@ public class ProductController {
                 .status(HttpStatus.OK)
                 .body(receivedProduct);
     }
+
+    @PutMapping("/updateProduct/{id}")
+    public ResponseEntity<Products> UpdateProduct(@PathVariable Long id, @RequestBody Products products) {
+        Products receivedProduct =productService.updateProduct(id,products);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(receivedProduct);
+    }
+
+
 }

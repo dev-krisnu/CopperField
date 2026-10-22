@@ -28,4 +28,21 @@ public class ProductService {
     public Optional<Products> getOneProduct(Long id){
         return productRepository.findById(id);
     }
+
+    public Products updateProduct(Long id, Products products) {
+        Products unchangedProduct = productRepository.findById(id).orElse(null);
+        if (unchangedProduct != null) {
+            unchangedProduct.setProductName(products.getProductName());
+            unchangedProduct.setProductDescription(products.getProductDescription());
+            unchangedProduct.setProductPrice(products.getProductPrice());
+            unchangedProduct.setProductImageUrl(products.getProductImageUrl());
+            unchangedProduct.setProductIndex(products.getProductIndex());
+            unchangedProduct.setAvailability(products.getAvailability());
+            return productRepository.save(unchangedProduct);
+        }
+        return null;
+    }
+
+
+
 }
