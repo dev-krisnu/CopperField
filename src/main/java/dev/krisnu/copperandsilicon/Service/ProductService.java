@@ -43,6 +43,15 @@ public class ProductService {
         return null;
     }
 
+    public List<Products> deleteAllProduct(){
+        List<Products> receivedProduct =productRepository.findAll();
+        productRepository.deleteAll();
+        return receivedProduct;
+    }
 
-
+    public Optional<Products> deleteOneProduct(Long id){
+        Optional<Products> receivedProduct =productRepository.findById(id);
+        productRepository.deleteById(id);
+        return receivedProduct;
+    }
 }
