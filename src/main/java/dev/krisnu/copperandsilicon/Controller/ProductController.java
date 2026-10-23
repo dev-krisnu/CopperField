@@ -71,7 +71,7 @@ public class ProductController {
                 .body("All Products deleted successfully");
     }
 
-    @DeleteMapping("/softDeleteOneProduct/{id}")
+    @PatchMapping("/softDeleteOneProduct/{id}")
     public ResponseEntity<String> softDeleteOneProduct(@PathVariable Long id) {
         Boolean isDeleted =productService.softDeleteOneProduct(id);
         return ResponseEntity.ok()
