@@ -5,7 +5,6 @@ import dev.krisnu.copperandsilicon.Service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -65,4 +64,17 @@ public class ProductController {
         return ResponseEntity.ok().body("Product " +id+ " deleted successfully");
     }
 
+    @PatchMapping("/softDeleteAllProduct")
+    public ResponseEntity<String> softDeleteAllProduct() {
+         Boolean isDeleted =productService.softDeleteAllProduct();
+        return ResponseEntity.ok()
+                .body("All Products deleted successfully");
+    }
+
+    @DeleteMapping("/softDeleteOneProduct/{id}")
+    public ResponseEntity<String> softDeleteOneProduct(@PathVariable Long id) {
+        Boolean isDeleted =productService.softDeleteOneProduct(id);
+        return ResponseEntity.ok()
+                .body("Product " +id+ "is deleted successfully");
+    }
 }

@@ -25,4 +25,5 @@ public class Products {
     private Long productIndex;
     private String reviews;
     private Boolean availability;
+    private Boolean deleted;
 }

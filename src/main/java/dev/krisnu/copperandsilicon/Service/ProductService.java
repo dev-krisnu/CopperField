@@ -18,6 +18,7 @@ public class ProductService {
     }
 
     public Products postNewProduct(Products products){
+        products.setDeleted(false);
         return productRepository.save(products);
     }
 
@@ -54,4 +55,25 @@ public class ProductService {
         productRepository.deleteById(id);
         return receivedProduct;
     }
-}
+
+    public Boolean softDeleteAllProduct() {
+        List<Products> products = productRepository.findAll();
+        if (products.isEmpty()) {
+            return false;
+        }
+        products.forEach(product->product.setDeleted(true));
+        productRepository.saveAll(products);
+        return true;
+    }
+
+    public Boolean softDeleteOneProduct(Long id) {
+        Optional<Products> optionalProducts = productRepository.findById(id);
+        if (optionalProducts.isEmpty()) {
+            return false;
+        }
+        Products products=optionalProducts.get();
+        products.setDeleted(true);
+        productRepository.save(products);
+        return true;
+    }
+    }
